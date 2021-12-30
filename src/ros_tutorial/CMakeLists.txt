@@ -47,11 +47,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files( FILES  
+  param_msg.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -68,10 +66,9 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -116,7 +113,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -204,3 +201,56 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(simplepub
+  src/simplepub.cpp
+)
+add_dependencies(simplepub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(simplepub
+  ${catkin_LIBRARIES}
+)
+
+add_executable(simplesub
+  src/simplesub.cpp
+)
+add_dependencies(simplesub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(simplesub
+  ${catkin_LIBRARIES}
+)
+
+add_executable(class_pub
+  src/class_pub_node.cpp
+  src/class_pub.cpp
+)
+add_dependencies(class_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(class_pub
+  ${catkin_LIBRARIES}
+)
+
+add_executable(class_sub
+  src/class_sub_node.cpp
+  src/class_sub.cpp
+)
+add_dependencies(class_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(class_sub
+  ${catkin_LIBRARIES}
+)
+
+
+add_executable(param_pub
+  src/param_pub.cpp
+  src/param_pub_node.cpp
+)
+add_dependencies(param_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(param_pub
+  ${catkin_LIBRARIES}
+)
+
+add_executable(param_sub
+  src/param_sub.cpp
+  src/param_sub_node.cpp
+)
+add_dependencies(param_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(param_sub
+  ${catkin_LIBRARIES}
+)
