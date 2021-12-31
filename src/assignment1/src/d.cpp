@@ -1,7 +1,7 @@
 #include <assignment1/d.h>
 
 D::D(){
-    sub_=nh_.subscribe("as1", 10, &D::d_node_cb, this);
+    sub_=nh_.subscribe("topic_c", 10, &D::d_node_cb, this);
 }
 
 void D::d_node_cb(const assignment1::as1& msg){

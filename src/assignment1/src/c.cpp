@@ -1,13 +1,12 @@
 #include <assignment1/c.h>
 
 C::C(){
-    pub_=nh_.advertise<assignment1::as1>("as1", 10);
-    sub_=nh_.subscribe("as1", 10, &C::c_node_cb, this);
+    pub_=nh_.advertise<assignment1::as1>("topic_c", 10);
+    sub_=nh_.subscribe("topic_b", 10, &C::c_node_cb, this);
 }
 
 void C::c_node_cb(const assignment1::as1& msg){
     topic_b=msg.num;
-    ROS_WARN("C subscribe msg from B : %d", msg.num);
 }
 
 void C::Run(){

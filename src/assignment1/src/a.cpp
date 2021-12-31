@@ -1,7 +1,7 @@
 #include <assignment1/a.h>
 
 A::A(){
-    pub_=nh_.advertise<assignment1::as1>("as1", 10);
+    pub_=nh_.advertise<assignment1::as1>("topic_a", 10);
 }
 
 void A::Run(){
@@ -12,7 +12,7 @@ void A::Run(){
     while(ros::ok()){
         msg_.num=param_a++;
         pub_.publish(msg_);
-        ROS_INFO("A Publish Msg : %d", msg_.num);
+        ROS_INFO("A publish msg to B: %d", msg_.num);
         rate.sleep();
     }
 }
