@@ -47,11 +47,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files( FILES
+  as1.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -68,10 +66,9 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages( DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -205,34 +202,38 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(as1_node_a
-  src/as1_node_a.cpp
+add_executable(a
+  src/a.cpp
+  src/a_node.cpp
 )
-add_dependencies(as1_node_a ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(as1_node_a
+add_dependencies(a ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(a
   ${catkin_LIBRARIES}
 )
 
-add_executable(as1_node_b
-  src/as1_node_b.cpp
+add_executable(b
+  src/b.cpp
+  src/b_node.cpp
 )
-add_dependencies(as1_node_b ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(as1_node_b
+add_dependencies(b ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(b
   ${catkin_LIBRARIES}
 )
 
-add_executable(as1_node_c
-  src/as1_node_c.cpp
+add_executable(c
+  src/c.cpp
+  src/c_node.cpp
 )
-add_dependencies(as1_node_c ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(as1_node_c
+add_dependencies(c ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(c
   ${catkin_LIBRARIES}
 )
 
-add_executable(as1_node_d
-  src/as1_node_d.cpp
+add_executable(d
+  src/d.cpp
+  src/d_node.cpp
 )
-add_dependencies(as1_node_d ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(as1_node_d
+add_dependencies(d ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(d
   ${catkin_LIBRARIES}
 )

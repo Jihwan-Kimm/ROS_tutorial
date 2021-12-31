@@ -1,24 +1,25 @@
-#include <assignment1/a.h>
+#include <assignment1/b.h>
 
 B::B(){
     pub_=nh_.advertise<assignment1::as1>("as1", 10);
-    sub_=nh_.subscribe("as1", 10, &ParamSub::b_node_cb, this);
+    sub_=nh_.subscribe("as1", 10, &B::b_node_cb, this);
 }
 
-void ParamSub::b_node_cb(const assignment1::as1& msg){
-    ROS_WARN("Subscribe param msg : %d", msg.num);
+void B::b_node_cb(const assignment1::as1& msg){
+    topic_a=msg.num;
+    ROS_WARN("B subscribe msg from A : %d", msg.num);
 }
 
 void B::Run(){
     ros::Rate rate(10);
 
-    nh_.param("/b/int_param", int_data_, -1);
+    nh_.param("/b/int_param", param_b, -1);
 
     while(ros::ok()){
         ros::spinOnce();
-        msg_.num=int_data_++;
+        msg_.num=param_b+topic_a;
         pub_.publish(msg_);
-        ROS_INFO("B Publish Msg : %d", msg_.num);
+        ROS_INFO("B publish msg to C : %d", msg_.num);
         rate.sleep();
     }
 }

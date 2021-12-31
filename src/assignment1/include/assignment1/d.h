@@ -5,11 +5,11 @@
 class D{
     public:
         D();
-        void param_node_cb(const assignment1::as1& msg);
+        void d_node_cb(const assignment1::as1& msg);
         void Run();
     private:
         ros::NodeHandle nh_;
         ros::Publisher pub_;
         ros::Subscriber sub_;
-        assignment1::as1 msg_; 
+        int topic_c;
 };

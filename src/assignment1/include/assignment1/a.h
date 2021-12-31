@@ -10,5 +10,5 @@ class A{
         ros::NodeHandle nh_;
         ros::Publisher pub_;
         assignment1::as1 msg_;
-        int int_data_;
+        int param_a;
 };
