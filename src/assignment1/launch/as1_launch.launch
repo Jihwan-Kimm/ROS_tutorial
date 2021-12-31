@@ -1,0 +1,7 @@
+<launch>
+       <rosparam command="load" file="/home/kim/catkin_ws/src/assignment1/cfg/param_list.yaml"/>
+       <node pkg="assignment1" type="a" name="a" output="screen"/> 
+       <node pkg="assignment1" type="b" name="b" output="screen" /> 
+       <node pkg="assignment1" type="c" name="c" output="screen" /> 
+       <node pkg="assignment1" type="d" name="d" output="screen" /> 
+</launch>

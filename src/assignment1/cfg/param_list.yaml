@@ -1,0 +1,8 @@
+a:
+  int_param: 10
+
+b:
+  int_param: 20
+
+c:
+  int_param: 30
