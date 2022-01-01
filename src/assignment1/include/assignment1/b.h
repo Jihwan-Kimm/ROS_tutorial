@@ -11,6 +11,6 @@ class B{
         ros::Publisher pub_;
         ros::Subscriber sub_;
         std_msgs::Int32 msg_; 
-        int topic_a;
+        int topic_a=0;
         int param_b;
 };
