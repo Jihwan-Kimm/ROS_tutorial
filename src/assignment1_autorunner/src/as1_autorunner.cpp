@@ -15,9 +15,9 @@ void AS1_Autorunner::register_subscribers(){
     sub_v_.resize(TOTAL_STEP_NUM);          // Resizing the subscriber vectors. Its size must be same with number of steps
 
     // Set the check function(subscriber)
-    sub_v_[STEP(1)] = nh_.subscribe("topic_a", 3, &AS1_Autorunner::a_to_b_cb, this);
-    sub_v_[STEP(2)] = nh_.subscribe("topic_b", 3, &AS1_Autorunner::b_to_c_cb, this);
-    sub_v_[STEP(3)] = nh_.subscribe("topic_c", 3, &AS1_Autorunner::c_to_d_cb, this);
+    sub_v_[STEP(1)] = nh_.subscribe("topic_a", 10, &AS1_Autorunner::a_to_b_cb, this);
+    sub_v_[STEP(2)] = nh_.subscribe("topic_b", 10, &AS1_Autorunner::b_to_c_cb, this);
+    sub_v_[STEP(3)] = nh_.subscribe("topic_c", 10, &AS1_Autorunner::c_to_d_cb, this);
 }
 
 void AS1_Autorunner::a_to_b_cb(const std_msgs::Int32& msg){
