@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(assignment1)
+project(assignment1_autorunner)
+
+set(ROS_AUTORUNNER_LIB "/home/kim/catkin_ws/src/ros_autorunner_lib") # Add library line
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -47,8 +49,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files( FILES
-#   as1.msg
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
 # )
 
 ## Generate services in the 'srv' folder
@@ -66,7 +70,8 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages( DEPENDENCIES
+# generate_messages(
+#   DEPENDENCIES
 #   std_msgs
 # )
 
@@ -101,7 +106,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES assignment1
+#  LIBRARIES assignment1_autorunner
 #  CATKIN_DEPENDS message_generation roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -113,13 +118,13 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
+  include  ${catkin_INCLUDE_DIRS}
+  ${ROS_AUTORUNNER_LIB}/include
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/assignment1.cpp
+#   src/${PROJECT_NAME}/assignment1_autorunner.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -130,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/assignment1_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/assignment1_autorunner_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -194,7 +199,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_assignment1.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_assignment1_autorunner.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -202,38 +207,14 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(a
-  src/a.cpp
-  src/a_node.cpp
-)
-add_dependencies(a ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(a
-  ${catkin_LIBRARIES}
-)
 
-add_executable(b
-  src/b.cpp
-  src/b_node.cpp
+add_executable(as1_autorunner
+  include/assignment1_autorunner/as1_autorunner.h
+  src/as1_autorunner_node.cpp
+  src/as1_autorunner.cpp
 )
-add_dependencies(b ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(b
+add_dependencies(as1_autorunner ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(as1_autorunner
   ${catkin_LIBRARIES}
-)
-
-add_executable(c
-  src/c.cpp
-  src/c_node.cpp
-)
-add_dependencies(c ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(c
-  ${catkin_LIBRARIES}
-)
-
-add_executable(d
-  src/d.cpp
-  src/d_node.cpp
-)
-add_dependencies(d ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(d
-  ${catkin_LIBRARIES}
+  ros_autorunner_lib
 )

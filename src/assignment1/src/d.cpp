@@ -4,9 +4,9 @@ D::D(){
     sub_=nh_.subscribe("topic_c", 10, &D::d_node_cb, this);
 }
 
-void D::d_node_cb(const assignment1::as1& msg){
-    topic_c=msg.num;
-    ROS_WARN("D subscribe msg from C : %d", msg.num);
+void D::d_node_cb(const std_msgs::Int32& msg){
+    topic_c=msg.data;
+    ROS_WARN("D subscribed %d", topic_c);
 }
 
 void D::Run(){

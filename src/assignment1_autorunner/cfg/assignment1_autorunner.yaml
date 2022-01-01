@@ -1,0 +1,21 @@
+total_step_num: 4
+terminate_script_path: "/home/kim/catkin_ws/src/assignment1_autorunner/script/terminate.sh"
+a:
+  int_param: 5
+
+b:
+  int_param: 20
+
+c:
+  int_param: 30
+# step_# : 
+#     [0] pacakge name
+#     [1] target name( node name or launch script name )
+#     [2] state that create constraint topic or not ( "true" or "false" )
+#     [3] state that check constraint topic or not ( "true" or "false" )
+#     [4] target type( RUN or LAUNCH )
+
+step_1: ["assignment1", "a", "true", "false", "RUN"]
+step_2: ["assignment1", "b", "true", "true", "RUN"]
+step_3: ["assignment1", "c", "true", "true", "RUN"]
+step_4: ["assignment1", "d", "false", "true", "RUN"]

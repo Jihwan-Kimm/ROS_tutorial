@@ -1,12 +1,12 @@
 #include <assignment1/b.h>
 
 B::B(){
-    pub_=nh_.advertise<assignment1::as1>("topic_b", 10);
+    pub_=nh_.advertise<std_msgs::Int32>("topic_b", 10);
     sub_=nh_.subscribe("topic_a", 10, &B::b_node_cb, this);
 }
 
-void B::b_node_cb(const assignment1::as1& msg){
-    topic_a=msg.num;
+void B::b_node_cb(const std_msgs::Int32& msg){
+    topic_a=msg.data;
 }
 
 void B::Run(){
@@ -16,9 +16,9 @@ void B::Run(){
 
     while(ros::ok()){
         ros::spinOnce();
-        msg_.num=param_b+topic_a;
+        msg_.data=param_b+topic_a;
         pub_.publish(msg_);
-        ROS_INFO("B publish msg to C : %d", msg_.num);
+        ROS_INFO("topic_b : %d", msg_.data);
         rate.sleep();
     }
 }

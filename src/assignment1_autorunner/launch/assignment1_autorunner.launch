@@ -1,0 +1,4 @@
+<launch>
+    <rosparam command="load" file="/home/kim/catkin_ws/src/assignment1_autorunner/cfg/assignment1_autorunner.yaml" />
+    <node pkg="assignment1_autorunner" type="as1_autorunner" name="as1_autorunner" output="screen" />
+</launch>
