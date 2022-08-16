@@ -16,5 +16,4 @@ Practicing ROS
   * <https://www.youtube.com/watch?v=XotYL_niECg&list=PLIPCSNtFzLulKVFpgJkZWd44fivhvxTn1&index=1>
 
 # Assignment1
-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
-image
+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
